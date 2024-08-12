@@ -1,21 +1,12 @@
-import React from 'react';
-import './App.css';
-// import { countState, doubleCountState } from "./atom";
-import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
-import Main from './pages/Main';
+import React from "react";
+import { RecoilRoot } from "recoil";
+import TodoList from './pages/TodoList';
 
 function App() {
-  
-  return (
-    <div className="App">
-      <>
-      <Routes>
-        <Route path='/' element={<Main />} />
-      </Routes>
-      </>
-    </div>
+  return(
+    <RecoilRoot>
+      <TodoList />
+    </RecoilRoot>
   );
 }
 
