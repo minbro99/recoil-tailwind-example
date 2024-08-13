@@ -1,22 +1,35 @@
 import React from "react";
+import { RecoilRoot } from "recoil";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Header from '../components/Header';
-import NavBar from "../components/NavBar";
+import Home from "./pages/Home";
+import Main from './components/Main';
+import TodoList from "./todo/TodoList";
 
-import Home1 from "./Home1";
+import Header from "./components/Header";
+import { Login } from "./pages/Login";
+import LoginSuccess from './pages/LoginSuccess';
+
+import Exchange from "./components/Exchange";
 
 
-const Home: React.FC = () => {
-    return(
-        <>
-        <NavBar />
-        <Header />
-        <Home1 />
+function App() {
+  return (
+    <RecoilRoot>
+      <>
+        
         <Routes>
-        </Routes>
-        </>
-    )
+          <Route path="/" element={<Main />} />
+          <Route path="/todo" element={<TodoList />} />
+          <Route path="/home" element={<Home />} /> 
+          <Route path="/header" element={<Header />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/loginsuccess" element={<LoginSuccess />} />
+          <Route path="/exchange" element={<Exchange />} />
+        </Routes> 
+      </>
+    </RecoilRoot>
+  );
 }
 
-export default Home;
+export default App;
