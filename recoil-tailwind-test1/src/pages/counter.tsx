@@ -1,11 +1,13 @@
 import React, { ChangeEvent } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { plusState, plusResultState, minusResultState } from "../states/CounterState";
+import { plusState, plusResultState, minusResultState, multipleResultState, divideResultState } from "../states/CounterState";
 
 const Counter: React.FC = () => {
   const [inputValue, setInputValue] = useRecoilState(plusState); // 하나의 입력 값을 관리
   const result1 = useRecoilValue(plusResultState);
   const result2 = useRecoilValue(minusResultState);
+  const result3 = useRecoilValue(multipleResultState);
+  const result4 = useRecoilValue(divideResultState);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(Number(e.target.value)); // 입력 값을 숫자로 변환하여 상태 업데이트
@@ -17,6 +19,13 @@ const Counter: React.FC = () => {
 
   const decrement = () => {
     setInputValue(inputValue - 1); 
+  };
+
+  const double = () => {
+    setInputValue(inputValue * 2); 
+  };
+  const divide = () => {
+    setInputValue(inputValue / 2); 
   };
 
   return (
@@ -47,6 +56,20 @@ const Counter: React.FC = () => {
         빼기
       </button>
       <p>결과값 (입력값 - 1): {result2}</p>
+      <button
+        className="bg-red-100 text-green-800 mt-4 px-4 py-2 rounded"
+        onClick={double}
+      >
+        곱하기
+      </button>
+      <p>결과값 (입력값 *2): {result3}</p>
+      <button
+        className="bg-red-100 text-green-800 mt-4 px-4 py-2 rounded"
+        onClick={divide}
+      >
+        나누기
+      </button>
+      <p>결과값 (입력값 / 2): {result4}</p>
     </div>
   );
 };
